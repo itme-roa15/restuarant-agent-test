@@ -1,0 +1,25 @@
+[project]
+name = "pratice-harness"
+version = "0.1.0"
+description = "Restaurant agent with application-level tool permissions and a terminal UI"
+readme = "README.md"
+authors = [
+    { name = "itme-roa15", email = "roachamreun15@proton.me" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2,<3",
+    "openai>=1,<3",
+    "sqlalchemy>=2,<3",
+]
+
+[project.scripts]
+restaurant-agent = "pratice_harness.main:main"
+
+[build-system]
+requires = ["uv_build>=0.12.0,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+data = { purelib = "data" }
+wheel-exclude = ["*.sqlite3", "data/seed.py", "data/__init__.py"]
